@@ -38,4 +38,4 @@ jobs:
         git add server.js
         git add package.json
         git commit -m "Deploy to production branch"
-        git push origin production --force
+        git push origin master:production --force
