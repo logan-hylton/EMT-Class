@@ -4,10 +4,10 @@ const app = express(),
       port = 3070;
 
 app.use(bodyParser.json());
-app.use(express.static(process.cwd() + '../my-app/dist'));
+app.use(express.static(process.cwd() + '/dist'));
 
 app.get('/', (req,res) => {
-    res.sendFile(process.cwd() + '../my-app/dist/index.html');
+    res.sendFile(process.cwd() + '/dist/index.html');
 });
 
 app.listen(port, () => {
