@@ -28,7 +28,7 @@ jobs:
       run: |
         npm ci
         npm run build
-        rm -R src/ public/ .github/
+        rm -R src/ public/ .github/ node_modules/
         rm vite.config.js .eslintrc.cjs *.md package-lock.json *.html 
     - name: Push to production branch
       run: |
