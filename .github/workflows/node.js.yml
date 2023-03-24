@@ -26,6 +26,6 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build 
-    - run: git add dist/
+    - run: git add -f dist/
     - run: git commit -m "Deploy to production branch"
     - run: git push origin production
