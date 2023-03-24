@@ -34,4 +34,4 @@ jobs:
         git config --global user.name "Logan Hylton"
         git add -f dist/
         git commit -m "Deploy to production branch"
-        git push origin production
+        git push origin production --force
