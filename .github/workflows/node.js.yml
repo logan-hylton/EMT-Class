@@ -28,14 +28,13 @@ jobs:
       run: |
         npm ci
         npm run build
+        rm -R src/ public/ .github/
+        rm vite.config.js .eslintrc.cjs *.md package-lock.json *.html 
     - name: Push to production branch
       run: |
         git fetch
         git config --global user.email "lhyltoncs@gmail.com"
         git config --global user.name "Logan Hylton"
-        git branch
-        git add -f dist/
-        git add server.js
-        git add package.json
+        git add -f *
         git commit -m "Deploy to production branch"
         git push origin master:production --force
