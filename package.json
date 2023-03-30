@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore server.js"
   },
   "dependencies": {
+    "@auth0/auth0-vue": "^2.1.0",
     "bootstrap": "^5.2.3",
     "bootstrap-vue": "^2.23.1",
     "express": "^4.18.2",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "@volar/vue-language-plugin-pug": "^1.2.0",
     "eslint": "^8.34.0",
     "eslint-plugin-vue": "^9.9.0",
     "nodemon": "^2.0.22",
