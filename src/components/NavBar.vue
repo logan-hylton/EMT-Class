@@ -45,4 +45,7 @@ RouterView(v-if="this.isAuthenticated && !this.isLoading")
 .container.text-center(v-if="!this.isAuthenticated && !this.isLoading") 
   h2 Please login to continue
   button.btn.btn-primary(@click="login()") Login
+
+p Is Loading: {{ this.isLoading }}
+p Is Authenticated: {{ this.isAuthenticated }}
 </template>
