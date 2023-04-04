@@ -5,7 +5,9 @@ export default {
   name: "NavBar",
   setup() {
     const auth0 = useAuth0();
+    console.log(JSON.stringify(auth0));
     return {
+      auth0: auth0,
       isAuthenticated: auth0.isAuthenticated,
       isLoading: auth0.isLoading,
       user: auth0.user,
@@ -44,4 +46,7 @@ RouterView(v-if="this.isAuthenticated && !this.isLoading")
 .container.text-center(v-if="!this.isAuthenticated && !this.isLoading") 
   h2 Please login to continue
   button.btn.btn-primary(@click="login()") Login
+
+
+p {{ JSON.stringify(this.auth0) }}
 </template>
