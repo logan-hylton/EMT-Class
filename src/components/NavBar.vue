@@ -5,7 +5,6 @@ export default {
   name: "NavBar",
   setup() {
     const auth0 = useAuth0();
-    
     return {
       isAuthenticated: auth0.isAuthenticated,
       isLoading: auth0.isLoading,
@@ -16,7 +15,7 @@ export default {
       logout() {
         auth0.logout({
           logoutParams: {
-            returnTo: window.location.origin
+            returnTo: window.location.href
           }
         });
       }
