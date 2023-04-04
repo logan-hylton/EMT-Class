@@ -46,7 +46,4 @@ RouterView(v-if="this.isAuthenticated && !this.isLoading")
 .container.text-center(v-if="!this.isAuthenticated && !this.isLoading") 
   h2 Please login to continue
   button.btn.btn-primary(@click="login()") Login
-
-
-p {{ JSON.stringify(this.auth0) }}
 </template>

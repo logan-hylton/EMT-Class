@@ -16,8 +16,10 @@ app.use(
     domain: authConfig.domain,
     clientId: authConfig.clientId,
     authorizationParams: {
-      redirect_uri: window.location.origin,
-    }
+      redirect_uri: window.location.href,
+    },
+    useRefreshTokens: authConfig.useRefreshTokens,
+    cacheLocation: authConfig.cacheLocation
   })
 )
 

@@ -1,4 +1,6 @@
 {
   "domain": "emt-class-lwhawk.us.auth0.com",
-  "clientId": "rOxV2xpwg7XJUZbM8XXda3Z2fLUY576R"
+  "clientId": "rOxV2xpwg7XJUZbM8XXda3Z2fLUY576R",
+  "useRefreshTokens": true,
+  "cacheLocation": "localstorage"
 }
