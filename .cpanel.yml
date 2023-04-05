@@ -1,6 +1,6 @@
 ---
 deployment:
  tasks:
- - export DEPLOYPATH=/home/lwhawkco/public_html/emt-class/
+ - export DEPLOYPATH=/home/lwhawkco/dev-emt-class/
  - /bin/cp -R dist/ $DEPLOYPATH/dist
  - /bin/cp * $DEPLOYPATH
