@@ -2,7 +2,5 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home/lwhawkco/public_html/emt-class/
- - /bin/cp dist/index.html $DEPLOYPATH
- - /bin/cp dist/favicon.ico $DEPLOYPATH
- - /bin/cp dist/logo.png $DEPLOYPATH
- - /bin/cp -R dist/assets/ $DEPLOYPATH
+ - /bin/cp -R dist/ $DEPLOYPATH/dist
+ - /bin/cp * $DEPLOYPATH
