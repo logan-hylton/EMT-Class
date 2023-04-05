@@ -33,7 +33,8 @@ jobs:
         rm -r node_modules
         git rm -r src public .github --ignore-unmatch
         git rm -r node_modules --ignore-unmatch
-        git rm vite.config.js .eslintrc.js *.md package-lock.json *.html --ignore-unmatch
+        git rm vite.config.js .eslintrc.js *.md package-lock.json --ignore-unmatch
+        git rm index.html
         git fetch
         git config --global user.email "lhyltoncs@gmail.com"
         git config --global user.name "Logan Hylton"
