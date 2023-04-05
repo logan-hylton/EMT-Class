@@ -1,25 +1,11 @@
 <script>
-import { RouterLink, RouterView } from 'vue-router'
-import { useAuth0 } from '@auth0/auth0-vue';
+import axios from 'axios';
 export default {
   name: "NavBar",
   setup() {
-    const auth0 = useAuth0();
-    console.log(JSON.stringify(auth0));
     return {
-      auth0: auth0,
-      isAuthenticated: auth0.isAuthenticated,
-      isLoading: auth0.isLoading,
-      user: auth0.user,
-      login() {
-        auth0.loginWithRedirect();
-      },
       logout() {
-        auth0.logout({
-          logoutParams: {
-            returnTo: window.location.href
-          }
-        });
+        window.location.pathname = '/emt-logout';
       }
     }
   }
@@ -34,16 +20,14 @@ header
     button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.mr-auto(v-if="this.isAuthenticated")
+      ul.navbar-nav.mr-auto
         li.nav-item
           RouterLink.nav-link(to='/') Home 
         li.nav-item
           RouterLink.nav-link(to='/admin') Admin
-        li.nav-item(v-if="this.isAuthenticated && !this.isLoading")
+        li.nav-item
           a.nav-link(@click="logout()" style="cursor: pointer") Logout
-RouterView(v-if="this.isAuthenticated && !this.isLoading")
-.spinner-border(role="status" v-if="this.isLoading")
-.container.text-center(v-if="!this.isAuthenticated && !this.isLoading") 
-  h2 Please login to continue
-  button.btn.btn-primary(@click="login()") Login
+RouterView
+
+p {{ item }}
 </template>
