@@ -15,7 +15,7 @@ const config = {
   authRequired: true,
   auth0Logout: true,
   secret: process.env.SECRET,
-  baseURL: 'http://localhost:3070',
+  baseURL: process.env.BASE_URL,
   clientID: process.env.CLIENT_ID,
   issuerBaseURL: process.env.ISSUER_BASE_URL
 };
@@ -74,7 +74,52 @@ app.get('/', async (req,res) => {
 app.get('/emt-logout', (req, res) => {
   req.session.destroy();
   res.redirect('/logout');
+});
+
+app.get('/admin', async (req, res) => {
+  res.sendFile(process.cwd() + (req.session.isAdmin == true ? '/dist/index.html' : '/403.html'));
+});
+
+app.get('/admin/users', async (req, res) => {
+  res.sendFile(process.cwd() + (req.session.isAdmin == true ? '/dist/index.html' : '/403.html'));
+});
+
+app.get('/admin/activities', async (req, res) => {
+  res.sendFile(process.cwd() + (req.session.isAdmin == true ? '/dist/index.html' : '/403.html'));
+});
+
+app.post('/api/user-is-admin', async (req, res) => {
+  var rows = await query("Select admin from User where email='" + req.oidc.user.email + "'");
+  req.session.isAdmin = rows[0]['admin'] == 1;
+  res.send({userIsAdmin: rows[0]['admin'] == 1});
+});
+
+app.post('/api/users', async(req, res) => {
+  var rows = await query("Select * from User");
+  res.send(rows.map((row) => {
+    return {email: row.email, admin: row.admin == 1};
+  }));
 })
+
+app.put('/api/users', async (req, res) => {
+  try {
+    var values = req.body.users.map(user => {
+      return "('" + user.email + "', " + (user.admin == true ? 'True' : 'False') + ")"
+    }).join(', ');
+    console.log(values);
+    var result = await query("Insert into User (email, admin) values " + values + " ON DUPLICATE KEY UPDATE admin=VALUES(admin)");
+    console.log(result);
+  } catch (err) {
+    res.status(501).send("internal server error");
+  }
+  res.status(200).send();
+});
+
+
+
+
+
+
 
 app.listen(port, () => {
     console.log(`Server listening on the port::${port}`);
